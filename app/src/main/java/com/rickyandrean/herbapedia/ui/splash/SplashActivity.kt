@@ -32,6 +32,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     private lateinit var splashViewModel: SplashViewModel
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var token = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,24 +48,10 @@ class SplashActivity : AppCompatActivity() {
 
         splashViewModel.getAuthentication().observe(this) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            MainActivity.token = it.token
+            token = it.token
 
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
             getMyLastLocation()
-
-            Handler(Looper.getMainLooper()).postDelayed({
-                if (it.token != "") {
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    val intent = Intent(this, OnboardingActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
-                    finish()
-                }
-            }, TIME.toLong())
         }
     }
 
@@ -79,7 +66,10 @@ class SplashActivity : AppCompatActivity() {
                 permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
                     getMyLastLocation()
                 }
-                else -> {}
+                else -> {
+                    Toast.makeText(this, "Location must be enabled to run the application!", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
             }
         }
 
@@ -91,13 +81,26 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun getMyLastLocation() {
-        if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
-            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-        ){
+        if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) && checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)){
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
+                    MainActivity.token = token
                     MainActivity.lat = location.latitude.toString()
                     MainActivity.lon = location.longitude.toString()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        if (token != "") {
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            val intent = Intent(this, OnboardingActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }, TIME.toLong())
                 } else {
                     Toast.makeText(this@SplashActivity, "Location is not found. Try Again", Toast.LENGTH_SHORT).show()
                 }

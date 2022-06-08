@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setupView()
         stack.add(0)
 
-        Log.d("ASEDE", "$lat and $lon")
+        DATA_STORE = dataStore
 
         binding.navView.setOnItemSelectedListener(this)
         binding.cvMapsMaps.setOnClickListener {
@@ -185,5 +185,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         var token = "token"
         var lat = "lat"
         var lon = "lon"
+        lateinit var DATA_STORE: DataStore<Preferences>
     }
 }

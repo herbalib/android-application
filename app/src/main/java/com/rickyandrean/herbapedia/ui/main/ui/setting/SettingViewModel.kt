@@ -1,13 +1,14 @@
 package com.rickyandrean.herbapedia.ui.main.ui.setting
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.rickyandrean.herbapedia.storage.AuthenticationPreference
+import kotlinx.coroutines.launch
 
 class SettingViewModel(private val preference: AuthenticationPreference) : ViewModel() {
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    fun logout() {
+        viewModelScope.launch {
+            preference.logout()
+        }
     }
-    val text: LiveData<String> = _text
 }

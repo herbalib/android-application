@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
@@ -49,7 +50,6 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
 
         setupView()
 
-        //detailViewModel.loadPlant(intent.getIntExtra(ID, 0))
         detailViewModel.loadPlant(Global.PLANT_ID)
         detailViewModel.plant.observe(this) {
             updateScreen(it.plants[0])
@@ -95,6 +95,7 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
             )
         }
         supportActionBar?.hide()
+        binding.fabAddPin.imageTintList = ColorStateList.valueOf(Color.rgb(255, 255, 255))
     }
 
     private fun updateScreen(plant: PlantsItem) {

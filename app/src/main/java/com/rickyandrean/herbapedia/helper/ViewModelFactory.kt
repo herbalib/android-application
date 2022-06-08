@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.rickyandrean.herbapedia.storage.AuthenticationPreference
 import com.rickyandrean.herbapedia.ui.login.LoginViewModel
+import com.rickyandrean.herbapedia.ui.main.ui.setting.SettingViewModel
 import com.rickyandrean.herbapedia.ui.splash.SplashViewModel
 
 class ViewModelFactory(private val pref: AuthenticationPreference) :
@@ -13,6 +14,7 @@ class ViewModelFactory(private val pref: AuthenticationPreference) :
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(pref) as T
             modelClass.isAssignableFrom(SplashViewModel::class.java) -> SplashViewModel(pref) as T
+            modelClass.isAssignableFrom(SettingViewModel::class.java) -> SettingViewModel(pref) as T
             else -> throw IllegalArgumentException("Unknown ViewModel: " + modelClass.name)
         }
     }

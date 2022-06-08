@@ -97,7 +97,6 @@ class HomeFragment : Fragment(), View.OnFocusChangeListener {
 
         binding.homePlant.btnReadMore.setOnClickListener {
             val intent = Intent(requireActivity(), DetailActivity::class.java)
-            // intent.putExtra(DetailActivity.ID, plant.id)
             Global.PLANT_ID = plant.id
             startActivity(intent)
         }

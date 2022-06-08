@@ -224,8 +224,4 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
-
-    companion object {
-        const val ID = "id"
-    }
 }

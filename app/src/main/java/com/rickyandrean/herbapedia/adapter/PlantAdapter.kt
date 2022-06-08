@@ -44,7 +44,6 @@ class PlantAdapter(private val listPlant: List<PlantsItem>): RecyclerView.Adapte
 
             binding.btnReadMore.setOnClickListener {
                 val intent = Intent(itemView.context, DetailActivity::class.java)
-                //intent.putExtra(DetailActivity.ID, plant.id)
                 Global.PLANT_ID = plant.id
                 itemView.context.startActivity(intent)
             }

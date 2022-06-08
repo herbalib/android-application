@@ -33,7 +33,7 @@
     <string name="title_plants">Plants</string>
     <string name="title_setting">Setting</string>
     <string name="icon_setting">Icon Setting</string>
-    <string name="greeting_header">Hi, Theophil</string>
+    <string name="greeting_header">Hi, Username</string>
     <string name="greeting_subheader">have a great day!</string>
     <string name="hint_search_plant">Search plant’s name</string>
     <string name="icon_scan">Icon Scan</string>
@@ -53,4 +53,7 @@
     <string name="process_content">How to process content</string>
     <string name="logout">Logout</string>
     <string name="plant_latin">Latin Name</string>
+    <string name="see_detail">See Detail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

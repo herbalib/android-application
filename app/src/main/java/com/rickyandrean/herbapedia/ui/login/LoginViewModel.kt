@@ -51,6 +51,7 @@ class LoginViewModel(private val preference: AuthenticationPreference): ViewMode
                         }
 
                         MainActivity.token = responseBody.accessToken.toString()
+                        MainActivity.name = responseBody.name.toString()
                         _loginAccess.value = true
                     } else {
                         Log.d(TAG, responseBody.error)

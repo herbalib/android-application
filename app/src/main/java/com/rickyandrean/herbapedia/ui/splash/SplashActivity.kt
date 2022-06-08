@@ -33,6 +33,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var splashViewModel: SplashViewModel
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var token = ""
+    private var name = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,7 @@ class SplashActivity : AppCompatActivity() {
         splashViewModel.getAuthentication().observe(this) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             token = it.token
+            name = it.name
 
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
             getMyLastLocation()
@@ -85,6 +87,7 @@ class SplashActivity : AppCompatActivity() {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     MainActivity.token = token
+                    MainActivity.name = name
                     MainActivity.lat = location.latitude.toString()
                     MainActivity.lon = location.longitude.toString()
 

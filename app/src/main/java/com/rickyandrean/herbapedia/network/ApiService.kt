@@ -41,6 +41,13 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<PlantResponse>
 
+    @GET("locations/plants")
+    fun getPlantsLocation(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Header("Authorization") token: String
+    ): Call<PlantsLocationResponse>
+
     @POST("locations/plants")
     fun addPlantLocation(
         @Header("Content-Type") type: String,

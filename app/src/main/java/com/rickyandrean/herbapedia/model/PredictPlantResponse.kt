@@ -7,5 +7,8 @@ data class PredictPlantResponse (
     val error: String,
 
     @field:SerializedName("success")
-    val success: String
+    val success: String,
+
+    @field:SerializedName("plant_id")
+    val plantId: Int
 )

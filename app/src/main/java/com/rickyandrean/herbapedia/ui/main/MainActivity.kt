@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         DATA_STORE = dataStore
 
+        binding.tvGreetingHeader.text = "Hi, $name"
         binding.navView.setOnItemSelectedListener(this)
         binding.cvMapsMaps.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
@@ -183,6 +183,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         val stack = mutableListOf<Int>()
         var searchAnimation = false
         var token = "token"
+        var name = "name"
         var lat = "lat"
         var lon = "lon"
         lateinit var DATA_STORE: DataStore<Preferences>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.rickyandrean.herbapedia.ui.main.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_plants"
+            app:destination="@id/navigation_plants"
+            app:popUpTo="@id/navigation_plants"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_setting"
+            app:destination="@id/navigation_setting"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/navigation_setting"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_plants"
+        android:name="com.rickyandrean.herbapedia.ui.main.ui.plants.PlantsFragment"
+        android:label="@string/title_plants"
+        tools:layout="@layout/fragment_plants" >
+        <action
+            android:id="@+id/action_navigation_plants_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_plants_to_navigation_setting"
+            app:destination="@id/navigation_setting"
+            app:popUpTo="@id/navigation_setting"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.rickyandrean.herbapedia.ui.main.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_navigation_setting_to_navigation_plants"
+            app:destination="@id/navigation_plants"
+            app:popUpTo="@id/navigation_plants"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_setting_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

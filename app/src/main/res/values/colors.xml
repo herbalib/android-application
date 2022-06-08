@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFDFA</color>
+    <color name="light_green">#ECF2F0</color>
+    <color name="fern">#9BB29F</color>
+    <color name="pine">#275B5D</color>
+    <color name="sacramento">#124546</color>
+    <color name="dark_gray">#3F4143</color>
+    <color name="light_gray">#C0C0C0</color>
+    <color name="light_gray2">#BEC3C1</color>
+    <color name="light_gray3">#AFAFAF</color>
+    <color name="gray">#B4B4B4</color>
+    <color name="light_white">#EEEDF0</color>
+</resources>

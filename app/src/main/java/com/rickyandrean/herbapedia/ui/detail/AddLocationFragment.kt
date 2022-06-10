@@ -40,6 +40,12 @@ class AddLocationFragment : DialogFragment() {
             }
         }
 
+        addLocationViewModel.error.observe(this){
+            if (it != "") {
+                Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.btnAddLocationSubmit.setOnClickListener {
             val lat = arguments?.getString(LAT)!!.toDouble()
             val lon = arguments?.getString(LON)!!.toDouble()

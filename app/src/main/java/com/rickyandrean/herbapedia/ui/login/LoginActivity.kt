@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.datastore.core.DataStore
@@ -58,6 +59,12 @@ class LoginActivity : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
                 finish()
+            }
+        }
+
+        loginViewModel.error.observe(this) {
+            if (it != "") {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         }
     }

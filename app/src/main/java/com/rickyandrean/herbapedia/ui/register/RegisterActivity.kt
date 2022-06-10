@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -24,6 +25,12 @@ class RegisterActivity : AppCompatActivity() {
 
         setupView()
 
+        registerViewModel.message.observe(this) {
+            if (it != "") {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.fabBack.setOnClickListener {
             val intent = Intent(this, OnboardingActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -40,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
             if (password == confirmPassword) {
                 registerViewModel.register(name, email, password)
             } else {
-                // Confirm password tidak sesuai
+                Toast.makeText(this, "Password doesn't match", Toast.LENGTH_SHORT).show()
             }
         }
 

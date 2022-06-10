@@ -18,13 +18,16 @@ import retrofit2.Response
 
 class LoginViewModel(private val preference: AuthenticationPreference): ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
+    private val _error = MutableLiveData<String>()
     private val _loginAccess = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
+    val error: LiveData<String> = _error
     val loginAccess: LiveData<Boolean> = _loginAccess
 
     init {
         _loading.value = false
         _loginAccess.value = false
+        _error.value = ""
     }
 
     fun login(email: String, password: String) {
@@ -36,11 +39,8 @@ class LoginViewModel(private val preference: AuthenticationPreference): ViewMode
                 _loading.value = false
 
                 val responseBody = response.body()!!
-
                 if (response.isSuccessful) {
                     if (responseBody.error == "") {
-                        Log.d(TAG, responseBody.success)
-
                         viewModelScope.launch {
                             preference.login(
                                 Authentication(
@@ -54,21 +54,17 @@ class LoginViewModel(private val preference: AuthenticationPreference): ViewMode
                         MainActivity.name = responseBody.name.toString()
                         _loginAccess.value = true
                     } else {
-                        Log.d(TAG, responseBody.error)
+                        _error.value = responseBody.error
                     }
                 } else {
-                    Log.d(TAG, "Error occured!")
+                    _error.value = responseBody.error
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 _loading.value = false
-                Log.e(TAG, "Error occured!")
+                _error.value = "Login Failed"
             }
         })
-    }
-
-    companion object {
-        private const val TAG = "LoginViewModel"
     }
 }

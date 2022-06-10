@@ -51,24 +51,17 @@ class ScanViewModel: ViewModel() {
                         Global.PLANT_ID = responseBody.plantId
                         _success.value = true
                     } else {
-                        Log.d(TAG, responseBody.error)
                         _error.value = responseBody.error
                     }
                 } else {
-                    Log.d(TAG, "Failed to upload image")
                     _error.value = "Failed to upload image"
                 }
             }
 
             override fun onFailure(call: Call<PredictPlantResponse>, t: Throwable) {
                 _loading.value = false
-                Log.d(TAG, "Failed to upload image")
                 _error.value = "Failed to upload image"
             }
         })
-    }
-
-    companion object {
-        const val TAG = "ScanViewModel"
     }
 }

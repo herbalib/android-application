@@ -1,8 +1,8 @@
 package com.rickyandrean.herbapedia.ui.maps
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,20 +27,35 @@ class LocationDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (MapsActivity.PLANT != null) {
-            binding.tvMapPlantName.text = MapsActivity.PLANT!!.name
-            binding.tvMapPlantDescription.text = MapsActivity.PLANT!!.description
-            binding.btnMapSeeDetail.setOnClickListener {
-                val intent = Intent(requireActivity(), DetailActivity::class.java)
-                Global.PLANT_ID = MapsActivity.PLANT!!.plantId
-                startActivity(intent)
+        if (arguments != null) {
+            binding.tvMapPlantName.text = arguments?.getString(NAME)
+            binding.tvMapPlantDescription.text = arguments?.getString(DESCRIPTION)
+
+            if (arguments?.getString(TYPE) == "map") {
+                binding.btnMapSeeDetail.setOnClickListener {
+                    val intent = Intent(requireActivity(), DetailActivity::class.java)
+                    Global.PLANT_ID = arguments?.getString(ID)!!.toInt()
+                    startActivity(intent)
+                    dismiss()
+                }
+            } else {
+                binding.btnMapSeeDetail.text = resources.getString(R.string.okay)
+                binding.btnMapSeeDetail.setOnClickListener {
+                    dismiss()
+                }
             }
         }
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TYPE = "type"
+        const val ID = "id"
+        const val NAME = "name"
+        const val DESCRIPTION = "description"
     }
 }

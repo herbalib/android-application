@@ -1,20 +1,14 @@
 package com.rickyandrean.herbapedia.ui.maps
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,8 +20,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.rickyandrean.herbapedia.R
 import com.rickyandrean.herbapedia.databinding.ActivityMapsBinding
 import com.rickyandrean.herbapedia.model.PlantsLocationsItem
-import com.rickyandrean.herbapedia.storage.Global
-import com.rickyandrean.herbapedia.ui.detail.DetailActivity
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var mMap: GoogleMap
@@ -93,8 +85,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     override fun onMarkerClick(m: Marker): Boolean {
         val index = m.tag.toString().toInt()
 
-        PLANT = mapsViewModel.plantLocation.value!!.locations[index]
-        LocationDetailFragment().show(supportFragmentManager, LocationDetailFragment::class.java.simpleName)
+        val args = Bundle()
+        args.putString(LocationDetailFragment.TYPE, "map")
+        args.putString(LocationDetailFragment.ID, mapsViewModel.plantLocation.value!!.locations[index].plantId.toString())
+        args.putString(LocationDetailFragment.NAME, mapsViewModel.plantLocation.value!!.locations[index].name)
+        args.putString(LocationDetailFragment.DESCRIPTION, mapsViewModel.plantLocation.value!!.locations[index].description)
+
+        LocationDetailFragment().apply {
+            arguments = args
+            show(supportFragmentManager, LocationDetailFragment::class.java.simpleName)
+        }
 
         return true
     }
@@ -118,9 +118,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         } else {
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
-    }
-
-    companion object {
-        var PLANT: PlantsLocationsItem? = null
     }
 }

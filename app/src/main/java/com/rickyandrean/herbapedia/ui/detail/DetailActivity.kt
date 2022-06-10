@@ -33,6 +33,7 @@ import com.rickyandrean.herbapedia.R
 import com.rickyandrean.herbapedia.databinding.ActivityDetailBinding
 import com.rickyandrean.herbapedia.model.PlantsItem
 import com.rickyandrean.herbapedia.storage.Global
+import com.rickyandrean.herbapedia.ui.maps.LocationDetailFragment
 
 
 class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -191,14 +192,15 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
 
         val index = m.tag.toString().toInt()
 
-        AlertDialog.Builder(this).apply {
-            setTitle(detailViewModel.plant.value?.plants?.get(0)?.name)
-            setMessage(detailViewModel.plant.value?.plants?.get(0)?.locations?.get(index)?.description)
-            setPositiveButton("OK") { _, _ ->
+        val args = Bundle()
+        args.putString(LocationDetailFragment.TYPE, "detail")
+        args.putString(LocationDetailFragment.ID, detailViewModel.plant.value!!.plants[0].id.toString())
+        args.putString(LocationDetailFragment.NAME, detailViewModel.plant.value!!.plants[0].name)
+        args.putString(LocationDetailFragment.DESCRIPTION, detailViewModel.plant.value!!.plants[0].locations?.get(index)?.description)
 
-            }
-            create()
-            show()
+        LocationDetailFragment().apply {
+            arguments = args
+            show(supportFragmentManager, LocationDetailFragment::class.java.simpleName)
         }
 
         return true

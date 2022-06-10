@@ -18,15 +18,9 @@ import retrofit2.Response
 class DetailViewModel: ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     private val _plant = MutableLiveData<PlantResponse>()
-    private val _addStatus = MutableLiveData<Boolean>()
 
     val loading: LiveData<Boolean> = _loading
     val plant: LiveData<PlantResponse> = _plant
-    val addStatus: LiveData<Boolean> = _addStatus
-
-    init {
-        _addStatus.value = false
-    }
 
     fun loadPlant(id: Int) {
         val client = ApiConfig.getApiService().detailPlant(id.toString(), MainActivity.lat, MainActivity.lon, "application/json", "Bearer ${MainActivity.token}")
@@ -47,31 +41,6 @@ class DetailViewModel: ViewModel() {
 
             override fun onFailure(call: Call<PlantResponse>, t: Throwable) {
                 Log.e(TAG, "Error occurred!")
-            }
-        })
-    }
-
-    fun addLocation(location: LatLng, description: String){
-        val addLocationRequest = AddLocationRequest(location.latitude, location.longitude, plant.value!!.plants[0].id, description)
-
-        val client = ApiConfig.getApiService().addPlantLocation("application/json", "Bearer ${MainActivity.token}", addLocationRequest)
-        client.enqueue(object: Callback<AddLocationResponse> {
-            override fun onResponse(call: Call<AddLocationResponse>, response: Response<AddLocationResponse>) {
-
-                if(response.isSuccessful) {
-                    if (response.body()!!.error == "") {
-                        Log.d(TAG, response.body()!!.success)
-                        _addStatus.value = true
-                    } else {
-                        Log.d(TAG, response.body()!!.error)
-                    }
-                } else {
-                    Log.d(TAG, "Error occured!")
-                }
-            }
-
-            override fun onFailure(call: Call<AddLocationResponse>, t: Throwable) {
-                Log.e(TAG, "Error occured!")
             }
         })
     }

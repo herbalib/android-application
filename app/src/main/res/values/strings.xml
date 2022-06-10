@@ -57,4 +57,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="okay">Okay</string>
+    <string name="add_location">Add Location</string>
+    <string name="hint_description">description</string>
 </resources>

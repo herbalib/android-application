@@ -12,7 +12,6 @@ import android.text.InputType
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -57,30 +56,16 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
             val mapFragment = supportFragmentManager.findFragmentById(R.id.map_detail) as SupportMapFragment
             mapFragment.getMapAsync(this)
         }
-        detailViewModel.addStatus.observe(this){
-            if (it) {
-                val intent = Intent(this, DetailActivity::class.java)
-                detailViewModel.loadPlant(Global.PLANT_ID)
-                startActivity(intent)
-                finish()
-            }
-        }
 
         binding.fabAddPin.setOnClickListener {
-            val input = EditText(this)
-            input.inputType = InputType.TYPE_CLASS_TEXT
+            val args = Bundle()
+            args.putString(AddLocationFragment.NAME, detailViewModel.plant.value!!.plants[0].name)
+            args.putString(AddLocationFragment.LAT, location?.latitude.toString())
+            args.putString(AddLocationFragment.LON, location?.longitude.toString())
 
-            AlertDialog.Builder(this).apply {
-                setTitle(detailViewModel.plant.value?.plants?.get(0)?.name)
-                setView(input)
-                setPositiveButton("OK") { _, _ ->
-                    detailViewModel.addLocation(location!!, input.text.toString())
-                }
-                setNegativeButton("Cancel") {dialog, _ ->
-                    dialog.cancel()
-                }
-                create()
-                show()
+            AddLocationFragment().apply {
+                arguments = args
+                show(supportFragmentManager, AddLocationFragment::class.java.simpleName)
             }
         }
     }

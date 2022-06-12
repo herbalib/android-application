@@ -20,13 +20,10 @@
 
 ## Preview
 
-<img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Screen" width="100" height="200" />
-
-
-![Login Page](preview/login.jpg)
-![Register Page](preview/register.jpg)
-![Search Page](preview/search.jpg)
-![Scan Page](preview/scan.jpg)
-![Detail Page](preview/detail.jpg)
-![Map Page](preview/map.jpg)
-![Add Page](preview/add.jpg)
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/register.jpg" alt="Register Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/search.jpg" alt="Search Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/scan.jpg" alt="Scan Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/detail.jpg" alt="Detail Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/map.jpg" alt="Map Page" width="200" height="400" />
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/add.jpg" alt="Add Page" width="200" height="400" />

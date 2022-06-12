@@ -20,5 +20,4 @@
 
 ## Preview
 
-<img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Page" width="200" height="400"/>
-<img src="https://github.com/herbapedia/android-application/blob/main/preview/register.jpg" alt="Register Page" width="200" height="400"/>
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/register.jpg" alt="Register Page" width="200" height="400"/>

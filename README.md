@@ -1,5 +1,3 @@
-# android-application
-
 ## About
 "Herbapedia" is an mobile application based on Android that is used as a means of educating the public about herbal plants. This application allows users to be able to view information about herbal plants, identify nearby plants and mark the location of herbal plants so that they can help others.
 
@@ -21,3 +19,10 @@
 ## How to Install
 
 ## Preview
+![Login Page](preview/login.jpg)
+![Register Page](preview/register.jpg)
+![Search Page](preview/search.jpg)
+![Scan Page](preview/scan.jpg)
+![Detail Page](preview/detail.jpg)
+![Map Page](preview/map.jpg)
+![Add Page](preview/add.jpg)

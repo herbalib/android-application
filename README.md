@@ -19,6 +19,10 @@
 ## How to Install
 
 ## Preview
+
+<img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Screen" width="100" height="200" />
+
+
 ![Login Page](preview/login.jpg)
 ![Register Page](preview/register.jpg)
 ![Search Page](preview/search.jpg)

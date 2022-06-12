@@ -17,7 +17,14 @@
 - Postman for API Testing
 
 ## How to Install
+You can use this appplication by click this link below then downloading process will start automatically. After that, install it on your Android device. You must be create account first to use the feature in application.
+
+```
+
+```
+
+Note: This application support on Android version 5.0 or latest
+
 
 ## Preview
-
 <img src="https://github.com/herbapedia/android-application/blob/main/preview/login.jpg" alt="Login Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/register.jpg" alt="Register Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/search.jpg" alt="Search Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/scan.jpg" alt="Scan Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/detail.jpg" alt="Detail Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/map.jpg" alt="Map Page" width="200" height="400"/> <img src="https://github.com/herbapedia/android-application/blob/main/preview/add.jpg" alt="Add Page" width="200" height="400"/>

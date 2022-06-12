@@ -16,13 +16,9 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.rickyandrean.herbapedia.R
 import com.rickyandrean.herbapedia.databinding.ActivityMapsBinding
-import com.rickyandrean.herbapedia.model.PlantsLocationsItem
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var mMap: GoogleMap
@@ -86,6 +82,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                     MarkerOptions()
                         .position(coordinate)
                         .alpha(0.7F)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
                 )?.tag = index
 
                 if (index == locations.size - 1) {

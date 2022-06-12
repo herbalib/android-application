@@ -143,9 +143,8 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
                     mMap.addMarker(
                         MarkerOptions()
                             .position(coordinate)
-                            //.title(detailViewModel.plant.value.plants[0].name)
                             .alpha(0.7F)
-                            //.snippet(story.description)
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
                     )?.tag = index
 
                     if (index == plant.locations.size - 1) {
@@ -163,7 +162,7 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMark
             marker = mMap.addMarker(
                 MarkerOptions()
                     .position(it)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
             )
             location = it
         }

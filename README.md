@@ -20,7 +20,7 @@
 You can use this appplication by click this link below then downloading process will start automatically. After that, install it on your Android device. You must be create account first to use the feature in application.
 
 ```
-
+[https://github.com/herbapedia/android-application/releases/download/v1.0/Herbapedia.apk](https://github.com/herbapedia/android-application/releases/download/v1.0/Herbapedia.apk)
 ```
 
 Note: This application support on Android version 5.0 or latest

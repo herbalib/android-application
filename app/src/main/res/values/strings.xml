@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Herbapedia</string>
-    <string name="logo">Logo Herbapedia</string>
+    <string name="app_name">Herbalib</string>
+    <string name="logo">Logo Herbalib</string>
     <string name="register">Register</string>
     <string name="register_underline"><u>Register</u></string>
     <string name="login">Login</string>
